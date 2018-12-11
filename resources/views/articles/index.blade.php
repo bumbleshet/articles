@@ -8,7 +8,7 @@
 
 	@foreach($articles as $article)
 		<article>
-			<h3> <a href="{{ url('articles/show/'.$article->id) }}">{{ $article->title }}</a> </h3>
+			<h3> <a href="{{ url('articles/'.$article->id) }}">{{ $article->title }}</a> </h3>
 			<p>{{ $article->body }}</p>
 		</article>
 	@endforeach

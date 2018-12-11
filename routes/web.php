@@ -18,10 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('articles', 'ArticlesController');
+//Route::get('articles', 'ArticlesController@index');
+// Route::get('articles/create', 'ArticlesController@create');
+// Route::post('articles', 'ArticlesController@store');
 
-Route::get('articles', 'ArticlesController@index');
-Route::get('articles/create', 'ArticlesController@create');
-Route::post('articles', 'ArticlesController@store');
-
-Route::get('articles/show/{id}', 'ArticlesController@show');
-Route::post('articles/show/{id}', 'ArticlesController@edit');
+// Route::get('articles/show/{id}', 'ArticlesController@show');
+// Route::post('articles/show/{id}', 'ArticlesController@edit');
