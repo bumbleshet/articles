@@ -2,24 +2,11 @@
 
 @section('content')
 
-	@if(count($errors))
-		<div class="alert alert-danger">
-			@foreach($errors->all() as $error)
-				{{ $error }} <br>
-			@endforeach
-		</div>
-	@endif
+	@include('articles._error')
 
 	{!! Form::open(['url' => 'articles']) !!}
 
-		{!! Form::label('title', 'Title') !!}
-		{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'ex. Article Title']) !!}
-
-		<div class="form-group" >
-			{!! Form::label('body', 'Body:') !!}
-			{!! Form::textarea('body', null, ['class' => 'form-control']) !!}
-		</div>
-		{!! Form::submit('Add New Article', ['class' => 'btn btn-primary']) !!}
+		@include('articles._form', ['btnText' => 'Add new article'])
 
 	{!! Form::close() !!}
 
