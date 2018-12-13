@@ -3,7 +3,7 @@
 @section('content')
 
 <h2>Articles</h2>
-
+<a href="{{ url('/articles/create') }}" class="btn btn-primary" role="button">Add Articles</a>
 <hr>
 
 	@foreach($articles as $article)
