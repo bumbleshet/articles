@@ -30,16 +30,14 @@ class CategoryController extends Controller
     {
     	$inputs = Request::all();
 
-        $rules = [
-            'category' => 'required|min:3',
-        ];
+  
+        $categories = new Category;
 
         $err_msgs = [
             'category.required' => 'Category must have a title', 
-            'category.min' => 'Category Title must be atleast 3 characters.', 
         ];
 
-        $validator = Validator::make(Request::all(), $rules, $err_msgs);
+        $validator = Validator::make(Request::all(), $categories->rules, $err_msgs);
 
         if ($validator->fails()) {
 
@@ -55,17 +53,17 @@ class CategoryController extends Controller
 
     public function update($id)
     {
-
-        $rules = [
-            'category' => 'required|min:3',
-        ];
+       $category = Category::find($id);
+        $category->rules = [
+            'category' => 'required|unique:categories,name,'.$id,
+        ];    
 
         $err_msgs = [
             'category.required' => 'Category must have a title', 
-            'category.min' => 'Category Title must be atleast 3 characters.', 
+            'category.unique' => 'Category Title must be unique.', 
         ];
 
-        $validator = Validator::make(Request::all(), $rules, $err_msgs);
+        $validator = Validator::make(Request::all(), $categories->rules, $err_msgs);
 
         if ($validator->fails()) {
 
